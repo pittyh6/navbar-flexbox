@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family:sans-serif;
+}
+nav{
+    background-color: #222;
+    padding: 5px 20px;
+}
+ul{
+    list-style-type: none;   /* take the bullets off */
+}
+a{
+    color: white;
+    text-decoration: none; /* takes the underline off*/
+}
+a:hover{
+    text-decoration: underline;
+}
+.menu li{
+    font-size: 16x;
+    padding: 15px 5px;
+}
+.menu li a{
+    /*To  make clickable the whole line */
+    display: block;
+}
+.logo a{
+    font-size: 20px;
+    color: rgb(255, 166, 166);
+}
+.button.secondary{
+    border-bottom: 1px #444 solid;
+}
+
+/*MOBILE MENU*/
+.menu{
+    display: flex; /*inline*/
+    flex-wrap: wrap; /*responsive - send to the next line the items*/
+    justify-content: space-between; /*same space between the items accordingly the screen size*/
+    align-items: center; /*center in the x position*/
+}
+.toggle{
+    order: 1; /*the toggle icon will be show as first*/
+}
+.item.button{
+    order: 2; /*the login and sign will be show as second*/
+}
+.item{
+    text-align: center; /*align in y position*/
+    order: 3; /*all items will be show as first*/
+    width: 100%; /*the whole line*/
+    display:none; 
+}
+.item.active{
+    display: block; /*add this class with js to show items when clock o toggle/hamburguer*/
+}
+/*hamburger icon*/
+.toggle{
+    cursor: pointer;
+}
+.bars{
+    background-color: #999;
+    display: inline-block;
+    position: relative;
+    height: 2px;
+    width: 18px;
+}
+.bars::after, .bars::before{
+    background-color: #999;
+    content: ""; /*when use after and before, always use content: ""*/
+    display: inline-block;
+    height: 2px;
+    width: 18px;
+    position: absolute;
+}
+.bars::after{
+    top: -5px;
+}
+.bars::before{
+    top: 5px;
+}
+
+
+/*TABLET MENU */
+@media all and (min-width: 468px){
+    .menu{
+        justify-content: center;
+    }
+    .logo{
+        flex: 1; /*makes logo takes the space until next item*/
+    }
+    .item.button{
+        display: block;
+        order: 1;
+        width: auto;
+    }
+    .toggle{
+        order:2;
+    }
+    .button.secondary{
+        border:0;
+    }
+    
+    .button a{
+        text-decoration: none;
+        padding: 7px 15px;
+        background: teal;
+        border: 1px solid #006d6d;
+        border-radius: 50em;
+    }
+    .button.secondary a{
+        background: transparent;
+    }
+    .button a:hover{
+        transition: all 0.25s;
+    }
+    .button:not(.secondary) a:hover{ /*everything that is not .secondary class changes*/
+        background: #006d6d;
+        border-color: #005959;
+    }
+    .button.secondary a:hover{
+        color: #ddd;
+    }
+}
+
+/*DESKTOP*/
+@media all and (min-width: 768px){
+    .item{
+        display: block; /*show items*/
+        width: auto; /*makes items show up in line x position*/
+    }
+    .toggle{
+        display: none; /*not show toggle icon/hamburguer*/
+    }
+    .logo{
+        order: 0; 
+    }
+    .item{
+        order:1;
+    }
+    .button{
+        order: 2;
+    }
+    .menu li{
+        padding: 15px 10px;
+    }
+    .menu li.button{
+        padding-right: 0;
+    }
+}
